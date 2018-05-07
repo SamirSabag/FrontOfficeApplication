@@ -1,0 +1,12 @@
+DECLARE @d1 DATETIME, 
+        @d2 DATETIME 
+
+SELECT @d1 = '04/01/2013', 
+       @d2 = '04/09/2103'
+
+SELECT Datediff(dd, @d1, @d2) 
+      + CASE WHEN Datepart(dw, @d1) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @d1, @d2) * 2 ) 
+       - CASE WHEN Datepart(dw, @d1) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @d2) = 1 THEN 1 ELSE 0 
+       END 
