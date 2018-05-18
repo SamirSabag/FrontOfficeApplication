@@ -1,0 +1,254 @@
+
+CREATE PROCEDURE sp_KPI_ARG 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersArg
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersArg
+
+UPDATE [dbo].[TrackersArg]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+
+CREATE PROCEDURE sp_KPI_Brasil 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersBrasil
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersBrasil
+
+UPDATE [dbo].[TrackersBrasil]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+
+CREATE PROCEDURE sp_KPI_Chile 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersChile
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersChile
+
+UPDATE [dbo].[TrackersChile]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+CREATE PROCEDURE sp_KPI_Colombia 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersColombia
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersColombia
+
+UPDATE [dbo].[TrackersColombia]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+CREATE PROCEDURE sp_KPI_CostaRica 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersCostaRica 
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersCostaRica 
+
+UPDATE [dbo].[TrackersCostaRica ]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+CREATE PROCEDURE sp_KPI_Mexico 
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersMexico
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersMexico
+
+UPDATE [dbo].[TrackersMexico]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
+
+CREATE PROCEDURE sp_KPI_Peru
+AS
+begin
+DECLARE @ScanDate DATETIME, @ReceptionDate DATETIME, @RescanDate DATETIME
+
+SELECT @ScanDate = [SCANNING DATE] from dbo.TrackersPeru
+SELECT @ReceptionDate = [RECEPTION DATE] from dbo.TrackersPeru
+
+UPDATE [dbo].[TrackersPeru]
+SET [KPI FO] = 
+		CASE [RESCAN CAUSED BY]
+        WHEN  NULL  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+        WHEN 'BO'  THEN  Datediff(dd, @ReceptionDate, @ScanDate) 
+      + CASE WHEN Datepart(dw, @ScanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @ScanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END   
+
+	    ELSE  Datediff(dd, @ReceptionDate, @RescanDate) 
+      + CASE WHEN Datepart(dw, @RescanDate) = 7 THEN 1 ELSE 0 END 
+       - (Datediff(wk, @ScanDate, @ReceptionDate) * 2 ) 
+       - CASE WHEN Datepart(dw, @RescanDate) = 1 THEN 1 ELSE 0 END + 
+       - CASE WHEN Datepart(dw, @ReceptionDate) = 1 THEN 1 ELSE 0 
+       END
+     END
+WHERE
+    [ID_] IS NOT NULL;
+end
